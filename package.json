@@ -1,0 +1,30 @@
+{
+  "name": "hiraadinstitute",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --max-warnings=0",
+    "sanity": "sanity"
+  },
+  "dependencies": {
+    "@portabletext/react": "^6.0.2",
+    "@sanity/image-url": "^1.2.0",
+    "@sanity/vision": "^5.11.0",
+    "next": "^16.1.6",
+    "next-sanity": "^12.1.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "sanity": "^5.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.4",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^16.1.6",
+    "typescript": "^5.9.3"
+  }
+}
