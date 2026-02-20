@@ -9,9 +9,10 @@ import type { NavItem } from '@/src/lib/types';
 
 interface SiteHeaderProps {
   navItems: NavItem[];
+  tagline: string;
 }
 
-export function SiteHeader({ navItems }: SiteHeaderProps) {
+export function SiteHeader({ navItems, tagline }: SiteHeaderProps) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -22,7 +23,7 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
           <Image src="/images/logo.jpg" alt="Hiraad Institute Logo" width={52} height={52} className="brand-logo" />
           <div className="brand-copy">
             <span>HIRAAD</span>
-            <small>Public Policy Studies Institute</small>
+            <small>{tagline}</small>
           </div>
         </Link>
 
@@ -37,23 +38,28 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
           <span />
         </button>
 
-        <nav className={`site-nav ${isOpen ? 'is-open' : ''}`} aria-label="Main navigation">
-          {navItems.map((item) => {
-            const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
+        <div className="header-actions">
+          <nav className={`site-nav ${isOpen ? 'is-open' : ''}`} aria-label="Main navigation">
+            {navItems.map((item) => {
+              const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
 
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="nav-link"
-                data-active={isActive ? 'true' : undefined}
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="nav-link"
+                  data-active={isActive ? 'true' : undefined}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+          <Link href="/contact" className="header-cta" onClick={() => setIsOpen(false)}>
+            Collaborate
+          </Link>
+        </div>
       </div>
     </header>
   );

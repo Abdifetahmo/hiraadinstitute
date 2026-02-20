@@ -22,7 +22,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     <html lang="en">
       <body>
         <div className="page-bg" />
-        <SiteHeader navItems={siteSettings.navItems} />
+        <SiteHeader navItems={siteSettings.navItems} tagline={siteSettings.tagline} />
         {children}
         <SiteFooter settings={siteSettings} />
       </body>
