@@ -1,6 +1,5 @@
 import { CTASection } from "@/components/site/CTASection";
-import { ButtonLink } from "@/components/site/ButtonLink";
-import { PublicationListCard } from "@/components/site/Cards";
+import { InteractivePublicationList } from "@/components/site/InteractivePublicationList";
 import { PageHero } from "@/components/site/PageHero";
 import { PageShell } from "@/components/site/PageShell";
 import { SectionIntro } from "@/components/site/SectionIntro";
@@ -69,6 +68,7 @@ export function PublicationsPageContent({ c }: PublicationsPageContentProps) {
 
   const recentPublications = [
     {
+      kind: "brief" as const,
       meta: c.t("publications.recent.1.meta", "POLICY BRIEF · JUL 2025"),
       title: c.t(
         "publications.recent.1.title",
@@ -82,6 +82,7 @@ export function PublicationsPageContent({ c }: PublicationsPageContentProps) {
       button: c.t("publications.recent.1.button", "Open Brief")
     },
     {
+      kind: "report" as const,
       meta: c.t("publications.recent.2.meta", "RESEARCH REPORT · JUN 2025"),
       title: c.t(
         "publications.recent.2.title",
@@ -95,6 +96,7 @@ export function PublicationsPageContent({ c }: PublicationsPageContentProps) {
       button: c.t("publications.recent.2.button", "Open Report")
     },
     {
+      kind: "other" as const,
       meta: c.t("publications.recent.3.meta", "DISCUSSION PAPER · MAY 2025"),
       title: c.t(
         "publications.recent.3.title",
@@ -108,6 +110,7 @@ export function PublicationsPageContent({ c }: PublicationsPageContentProps) {
       button: c.t("publications.recent.3.button", "Open Paper")
     },
     {
+      kind: "brief" as const,
       meta: c.t("publications.recent.4.meta", "POLICY NOTE · APR 2025"),
       title: c.t(
         "publications.recent.4.title",
@@ -209,31 +212,17 @@ export function PublicationsPageContent({ c }: PublicationsPageContentProps) {
             />
           </div>
 
-          <div className="publications-list-actions">
-            <div className="chip-row">
-              <span className="chip chip--active">{c.t("publications.filter.all", "All Formats")}</span>
-              <span className="chip">{c.t("publications.filter.briefs", "Policy Briefs")}</span>
-              <span className="chip">{c.t("publications.filter.reports", "Reports")}</span>
-            </div>
-            <div className="publications-right-actions">
-              <span className="sort-note">{c.t("publications.filter.sorted", "Sorted by newest")}</span>
-              <ButtonLink href="/publications" label={c.t("publications.browse", "Browse Archive")} variant="accent" />
-            </div>
-          </div>
-
-          <div className="stack">
-            {recentPublications.map((item) => (
-              <PublicationListCard
-                key={item.title}
-                meta={item.meta}
-                title={item.title}
-                description={item.description}
-                tags={item.tags}
-                buttonLabel={item.button}
-                href="/publications/decentralization-service-delivery-performance-somali-region"
-              />
-            ))}
-          </div>
+          <InteractivePublicationList
+            items={recentPublications}
+            href="/publications/decentralization-service-delivery-performance-somali-region"
+            labels={{
+              allFormats: c.t("publications.filter.all", "All Formats"),
+              briefs: c.t("publications.filter.briefs", "Policy Briefs"),
+              reports: c.t("publications.filter.reports", "Reports"),
+              sortedByNewest: c.t("publications.filter.sorted", "Sorted by newest"),
+              browseArchive: c.t("publications.browse", "Browse Archive")
+            }}
+          />
         </div>
       </section>
 
