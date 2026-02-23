@@ -1,0 +1,27 @@
+{
+  "name": "hiraad",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "rm -rf .next && next dev",
+    "build": "next build",
+    "start": "next start",
+    "sanity:seed": "tsx scripts/seed-sanity-content.ts"
+  },
+  "dependencies": {
+    "@sanity/client": "^7.6.2",
+    "lucide-react": "^0.477.0",
+    "next": "^14.2.26",
+    "next-sanity": "^9.8.53",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sanity": "^3.77.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "tsx": "^4.20.6",
+    "typescript": "^5.8.3"
+  }
+}
