@@ -225,6 +225,7 @@ img {
 
 .contact-box .btn {
   padding: 12px 24px;
+  align-self: flex-start;
 }
 
 .eyebrow {
@@ -1039,6 +1040,7 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  align-self: flex-start;
   border-radius: var(--radius-btn);
   background: var(--brand-green);
   color: var(--text-on-dark);
