@@ -122,20 +122,16 @@ export function ContactPageContent({ c }: ContactPageContentProps) {
             size="md"
           />
 
-          <article className="contact-form-panel">
-            <h3>{c.t("contact.form.title", "Send us a message")}</h3>
-            <p>
-              {c.t(
-                "contact.form.description",
-                "Share your interest area and a short note. We respond to collaboration inquiries as soon as possible."
-              )}
-            </p>
-            <ContactForm content={contactFormContent} />
-          </article>
-
-          <div className="contact-support-grid">
-            <article className="contact-benefits-card">
-              <h3>{c.t("contact.how.list.title", "What collaboration can support")}</h3>
+          <div className="contact-form-layout">
+            <article className="contact-form-context">
+              <p className="eyebrow eyebrow--accent">{c.t("contact.form.eyebrow", "COLLABORATION INQUIRY")}</p>
+              <h3>{c.t("contact.form.title", "Send us a message")}</h3>
+              <p>
+                {c.t(
+                  "contact.form.description",
+                  "Share your interest area and a short note. We respond to collaboration inquiries as soon as possible."
+                )}
+              </p>
               <ul className="check-list">
                 <li>{c.t("contact.how.1", "• Strengthen evidence-based policymaking")}</li>
                 <li>{c.t("contact.how.2", "• Support inclusive policy dialogue and participation")}</li>
@@ -144,6 +140,12 @@ export function ContactPageContent({ c }: ContactPageContentProps) {
               </ul>
             </article>
 
+            <article className="contact-form-panel">
+              <ContactForm content={contactFormContent} />
+            </article>
+          </div>
+
+          <div className="contact-support-grid">
             <article className="contact-box">
               <h3>{c.t("contact.box.title", "Start a collaboration")}</h3>
               <p>
@@ -157,6 +159,16 @@ export function ContactPageContent({ c }: ContactPageContentProps) {
                 label={c.t("contact.box.button", "Contact Hiraad")}
                 variant="primary"
               />
+            </article>
+
+            <article className="contact-aux-card">
+              <h3>{c.t("contact.aux.title", "What to include in your message")}</h3>
+              <p>
+                {c.t(
+                  "contact.aux.description",
+                  "For a faster response, include your organization, collaboration goal, preferred timeline, and any relevant links or context."
+                )}
+              </p>
             </article>
           </div>
         </div>

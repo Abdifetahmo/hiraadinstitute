@@ -901,7 +901,8 @@ img {
 .service-card,
 .contact-box,
 .contact-form-panel,
-.contact-benefits-card,
+.contact-form-context,
+.contact-aux-card,
 .dark-panel,
 .publication-list-card,
 .publication-card,
@@ -926,7 +927,8 @@ img {
 .service-card,
 .contact-box,
 .contact-form-panel,
-.contact-benefits-card,
+.contact-form-context,
+.contact-aux-card,
 .publication-list-card {
   padding: 24px;
 }
@@ -946,7 +948,8 @@ img {
 .asset-card,
 .contact-box,
 .contact-form-panel,
-.contact-benefits-card,
+.contact-form-context,
+.contact-aux-card,
 .dark-panel,
 .related-link-card {
   display: flex;
@@ -990,7 +993,8 @@ img {
   .publication-list-card:hover,
   .contact-box:hover,
   .contact-form-panel:hover,
-  .contact-benefits-card:hover,
+  .contact-form-context:hover,
+  .contact-aux-card:hover,
   .meta-card:hover,
   .related-link-card:hover {
     border-color: color-mix(in srgb, var(--brand-green) 24%, var(--border-light));
@@ -1539,9 +1543,17 @@ img {
   line-height: 1.7;
 }
 
+.contact-form-layout {
+  margin-bottom: 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
 .contact-box h3,
-.contact-form-panel h3,
-.contact-benefits-card h3 {
+.contact-form-context h3,
+.contact-aux-card h3 {
   margin: 0;
   font-family: var(--font-newsreader), serif;
   font-size: 28px;
@@ -1550,33 +1562,43 @@ img {
   color: var(--brand-accent);
 }
 
-.contact-form-panel {
-  margin-bottom: 24px;
+.contact-form-context {
   border-color: color-mix(in srgb, var(--brand-accent) 24%, var(--border-light));
   background: color-mix(in srgb, var(--bg-surface) 90%, #fff4df);
   gap: 14px;
 }
 
-.contact-form-panel > p {
+.contact-form-context > .eyebrow {
+  margin: 0;
+}
+
+.contact-form-context > p,
+.contact-aux-card > p {
   margin: 0;
   color: var(--text-secondary);
   font-size: 15px;
   line-height: 1.7;
 }
 
+.contact-form-context .check-list {
+  margin-bottom: 0;
+}
+
+.contact-form-panel {
+  border-color: color-mix(in srgb, var(--brand-accent) 24%, var(--border-light));
+  background: var(--bg-surface);
+}
+
 .contact-support-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
   align-items: start;
 }
 
-.contact-benefits-card {
-  background: color-mix(in srgb, var(--bg-surface) 78%, #fff7e9);
-}
-
-.contact-benefits-card .check-list {
-  margin-bottom: 0;
+.contact-aux-card {
+  background: color-mix(in srgb, var(--bg-surface) 84%, #fff7e9);
+  gap: 12px;
 }
 
 .contact-form {
@@ -2122,6 +2144,7 @@ img {
     gap: 40px;
   }
 
+  .contact-form-layout,
   .contact-support-grid {
     grid-template-columns: 1fr;
   }
@@ -2538,7 +2561,8 @@ img {
   .meta-card,
   .contact-box,
   .contact-form-panel,
-  .contact-benefits-card,
+  .contact-form-context,
+  .contact-aux-card,
   .dark-panel,
   .asset-card,
   .cycle-step,
@@ -2550,8 +2574,8 @@ img {
     grid-template-columns: 1fr;
   }
 
-  .contact-form-panel h3,
-  .contact-benefits-card h3,
+  .contact-form-context h3,
+  .contact-aux-card h3,
   .contact-box h3 {
     font-size: 22px;
   }
