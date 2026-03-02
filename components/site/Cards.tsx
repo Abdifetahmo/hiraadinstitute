@@ -86,6 +86,31 @@ export function PublicationCard({ image, tag, title, date, href }: PublicationCa
   );
 }
 
+interface NewsFeatureCardProps {
+  image: string;
+  meta: string;
+  title: string;
+  excerpt: string;
+  href: string;
+}
+
+export function NewsFeatureCard({ image, meta, title, excerpt, href }: NewsFeatureCardProps) {
+  return (
+    <article className="news-feature-card">
+      <div className="news-feature-card-image-wrap">
+        <Image src={image} alt={title} fill className="news-feature-card-image" sizes="(max-width: 768px) 100vw, 33vw" />
+      </div>
+      <div className="news-feature-card-content">
+        <p className="news-feature-card-meta">{meta}</p>
+        <Link href={href} className="news-feature-card-title-link">
+          <h3>{title}</h3>
+        </Link>
+        <p className="news-feature-card-excerpt">{excerpt}</p>
+      </div>
+    </article>
+  );
+}
+
 interface CompactCardProps {
   meta: string;
   title: string;
