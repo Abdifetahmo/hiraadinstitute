@@ -122,14 +122,28 @@ export function ContactPageContent({ c }: ContactPageContentProps) {
             size="md"
           />
 
-          <ul className="check-list">
-            <li>{c.t("contact.how.1", "• Strengthen evidence-based policymaking")}</li>
-            <li>{c.t("contact.how.2", "• Support inclusive policy dialogue and participation")}</li>
-            <li>{c.t("contact.how.3", "• Advance locally grounded research and analysis")}</li>
-            <li>{c.t("contact.how.4", "• Build institutional and human capacity")}</li>
-          </ul>
+          <article className="contact-form-panel">
+            <h3>{c.t("contact.form.title", "Send us a message")}</h3>
+            <p>
+              {c.t(
+                "contact.form.description",
+                "Share your interest area and a short note. We respond to collaboration inquiries as soon as possible."
+              )}
+            </p>
+            <ContactForm content={contactFormContent} />
+          </article>
 
-          <div className="contact-engagement-grid">
+          <div className="contact-support-grid">
+            <article className="contact-benefits-card">
+              <h3>{c.t("contact.how.list.title", "What collaboration can support")}</h3>
+              <ul className="check-list">
+                <li>{c.t("contact.how.1", "• Strengthen evidence-based policymaking")}</li>
+                <li>{c.t("contact.how.2", "• Support inclusive policy dialogue and participation")}</li>
+                <li>{c.t("contact.how.3", "• Advance locally grounded research and analysis")}</li>
+                <li>{c.t("contact.how.4", "• Build institutional and human capacity")}</li>
+              </ul>
+            </article>
+
             <article className="contact-box">
               <h3>{c.t("contact.box.title", "Start a collaboration")}</h3>
               <p>
@@ -138,18 +152,11 @@ export function ContactPageContent({ c }: ContactPageContentProps) {
                   "Email: info@hiraadinstitute.org\nLocation: Jigjiga, Somali Region, Ethiopia"
                 )}
               </p>
-              <ButtonLink href="mailto:info@hiraadinstitute.org" label={c.t("contact.box.button", "Contact Hiraad")} variant="dark" />
-            </article>
-
-            <article className="contact-form-card">
-              <h3>{c.t("contact.form.title", "Send us a message")}</h3>
-              <p>
-                {c.t(
-                  "contact.form.description",
-                  "Share your interest area and a short note. We respond to collaboration inquiries as soon as possible."
-                )}
-              </p>
-              <ContactForm content={contactFormContent} />
+              <ButtonLink
+                href="mailto:info@hiraadinstitute.org"
+                label={c.t("contact.box.button", "Contact Hiraad")}
+                variant="primary"
+              />
             </article>
           </div>
         </div>

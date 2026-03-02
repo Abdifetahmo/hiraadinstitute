@@ -900,6 +900,8 @@ img {
 .compact-card,
 .service-card,
 .contact-box,
+.contact-form-panel,
+.contact-benefits-card,
 .dark-panel,
 .publication-list-card,
 .publication-card,
@@ -923,6 +925,8 @@ img {
 .compact-card,
 .service-card,
 .contact-box,
+.contact-form-panel,
+.contact-benefits-card,
 .publication-list-card {
   padding: 24px;
 }
@@ -941,6 +945,8 @@ img {
 .meta-card,
 .asset-card,
 .contact-box,
+.contact-form-panel,
+.contact-benefits-card,
 .dark-panel,
 .related-link-card {
   display: flex;
@@ -983,6 +989,8 @@ img {
   .service-card:hover,
   .publication-list-card:hover,
   .contact-box:hover,
+  .contact-form-panel:hover,
+  .contact-benefits-card:hover,
   .meta-card:hover,
   .related-link-card:hover {
     border-color: color-mix(in srgb, var(--brand-green) 24%, var(--border-light));
@@ -1526,46 +1534,49 @@ img {
   gap: 12px;
 }
 
-.contact-box h3 {
-  font-size: 28px;
-  line-height: 1.2;
-}
-
 .contact-box p {
   font-size: 15px;
   line-height: 1.7;
 }
 
-.contact-engagement-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
-  gap: 24px;
-  align-items: start;
-}
-
-.contact-form-card {
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-card);
-  background: var(--bg-surface);
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.contact-form-card h3 {
+.contact-box h3,
+.contact-form-panel h3,
+.contact-benefits-card h3 {
   margin: 0;
   font-family: var(--font-newsreader), serif;
   font-size: 28px;
   font-weight: 500;
   line-height: 1.2;
+  color: var(--brand-accent);
 }
 
-.contact-form-card > p {
+.contact-form-panel {
+  margin-bottom: 24px;
+  border-color: color-mix(in srgb, var(--brand-accent) 24%, var(--border-light));
+  background: color-mix(in srgb, var(--bg-surface) 90%, #fff4df);
+  gap: 14px;
+}
+
+.contact-form-panel > p {
   margin: 0;
   color: var(--text-secondary);
   font-size: 15px;
   line-height: 1.7;
+}
+
+.contact-support-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.contact-benefits-card {
+  background: color-mix(in srgb, var(--bg-surface) 78%, #fff7e9);
+}
+
+.contact-benefits-card .check-list {
+  margin-bottom: 0;
 }
 
 .contact-form {
@@ -1594,7 +1605,7 @@ img {
   letter-spacing: 0.12em;
   line-height: 1.4;
   text-transform: uppercase;
-  color: var(--brand-green);
+  color: var(--brand-accent);
 }
 
 .contact-form input,
@@ -1629,8 +1640,8 @@ img {
 .contact-form select:focus-visible,
 .contact-form textarea:focus-visible {
   outline: none;
-  border-color: color-mix(in srgb, var(--brand-green) 42%, var(--border-light));
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-green) 16%, transparent);
+  border-color: color-mix(in srgb, var(--brand-accent) 55%, var(--border-light));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-accent) 20%, transparent);
   background: var(--bg-surface);
 }
 
@@ -1654,7 +1665,7 @@ img {
 }
 
 .contact-form-success {
-  color: var(--brand-green);
+  color: color-mix(in srgb, var(--brand-accent) 88%, #8f6722);
   font-weight: 500;
 }
 
@@ -2111,7 +2122,7 @@ img {
     gap: 40px;
   }
 
-  .contact-engagement-grid {
+  .contact-support-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2526,7 +2537,8 @@ img {
   .approach-step,
   .meta-card,
   .contact-box,
-  .contact-form-card,
+  .contact-form-panel,
+  .contact-benefits-card,
   .dark-panel,
   .asset-card,
   .cycle-step,
@@ -2536,6 +2548,12 @@ img {
 
   .contact-form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .contact-form-panel h3,
+  .contact-benefits-card h3,
+  .contact-box h3 {
+    font-size: 22px;
   }
 
   .compact-card h3,

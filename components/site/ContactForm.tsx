@@ -138,7 +138,7 @@ export function ContactForm({ content }: ContactFormProps) {
       </label>
 
       <div className="contact-form-actions">
-        <button type="submit" className="btn btn-dark contact-form-submit">
+        <button type="submit" className="btn btn-primary contact-form-submit">
           {content.submitLabel}
         </button>
         <p className="contact-form-note">{content.note}</p>
