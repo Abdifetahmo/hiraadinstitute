@@ -1,6 +1,7 @@
 import { ButtonLink } from "@/components/site/ButtonLink";
 import { CTASection } from "@/components/site/CTASection";
 import { CompactCard } from "@/components/site/Cards";
+import { ContactForm } from "@/components/site/ContactForm";
 import { PageHero } from "@/components/site/PageHero";
 import { PageShell } from "@/components/site/PageShell";
 import { SectionIntro } from "@/components/site/SectionIntro";
@@ -56,6 +57,28 @@ export function ContactPageContent({ c }: ContactPageContentProps) {
     }
   ];
 
+  const contactFormContent = {
+    emailSubjectPrefix: c.t("contact.form.emailSubjectPrefix", "Collaboration Request"),
+    fullNameLabel: c.t("contact.form.fullName", "Full Name"),
+    fullNamePlaceholder: c.t("contact.form.fullNamePlaceholder", "Your name"),
+    emailLabel: c.t("contact.form.email", "Email Address"),
+    emailPlaceholder: c.t("contact.form.emailPlaceholder", "name@example.com"),
+    organizationLabel: c.t("contact.form.organization", "Organization"),
+    organizationPlaceholder: c.t("contact.form.organizationPlaceholder", "Institution or company (optional)"),
+    interestLabel: c.t("contact.form.interest", "Interest Area"),
+    interestPlaceholder: c.t("contact.form.interestPlaceholder", "Select an area"),
+    messageLabel: c.t("contact.form.message", "Message"),
+    messagePlaceholder: c.t(
+      "contact.form.messagePlaceholder",
+      "Tell us how you would like to collaborate, and we will get back to you."
+    ),
+    submitLabel: c.t("contact.form.submit", "Send Message"),
+    note: c.t("contact.form.note", "Submitting opens your email app addressed to info@hiraadinstitute.org."),
+    success: c.t("contact.form.success", "Draft prepared successfully."),
+    notProvided: c.t("contact.form.none", "Not provided"),
+    interests: pathways.map((item) => item.title)
+  };
+
   return (
     <PageShell t={c.t}>
       <PageHero
@@ -106,16 +129,29 @@ export function ContactPageContent({ c }: ContactPageContentProps) {
             <li>{c.t("contact.how.4", "• Build institutional and human capacity")}</li>
           </ul>
 
-          <article className="contact-box">
-            <h3>{c.t("contact.box.title", "Start a collaboration")}</h3>
-            <p>
-              {c.t(
-                "contact.box.description",
-                "Email: info@hiraadinstitute.org\nLocation: Jigjiga, Somali Region, Ethiopia"
-              )}
-            </p>
-            <ButtonLink href="mailto:info@hiraadinstitute.org" label={c.t("contact.box.button", "Contact Hiraad")} variant="dark" />
-          </article>
+          <div className="contact-engagement-grid">
+            <article className="contact-box">
+              <h3>{c.t("contact.box.title", "Start a collaboration")}</h3>
+              <p>
+                {c.t(
+                  "contact.box.description",
+                  "Email: info@hiraadinstitute.org\nLocation: Jigjiga, Somali Region, Ethiopia"
+                )}
+              </p>
+              <ButtonLink href="mailto:info@hiraadinstitute.org" label={c.t("contact.box.button", "Contact Hiraad")} variant="dark" />
+            </article>
+
+            <article className="contact-form-card">
+              <h3>{c.t("contact.form.title", "Send us a message")}</h3>
+              <p>
+                {c.t(
+                  "contact.form.description",
+                  "Share your interest area and a short note. We respond to collaboration inquiries as soon as possible."
+                )}
+              </p>
+              <ContactForm content={contactFormContent} />
+            </article>
+          </div>
         </div>
       </section>
 
