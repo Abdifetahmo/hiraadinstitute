@@ -8,6 +8,7 @@ import { ButtonLink } from "@/components/site/ButtonLink";
 import { LogoMark } from "@/components/site/LogoMark";
 
 const navigation = [
+  { label: "Home", href: "/" },
   { label: "Research", href: "/research" },
   { label: "Publications", href: "/publications" },
   { label: "About", href: "/about" },
@@ -102,6 +103,18 @@ export function SiteHeader() {
 
       <div className={`site-mobile-nav ${mobileMenuOpen ? "is-open" : ""}`} aria-hidden={!mobileMenuOpen}>
         <div className="site-mobile-nav-inner">
+          <div className="site-mobile-nav-top">
+            <p className="site-mobile-nav-eyebrow">Explore</p>
+            <button
+              className="site-mobile-close"
+              type="button"
+              aria-label="Close navigation menu"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <span aria-hidden>×</span>
+            </button>
+          </div>
+
           <nav className="site-mobile-nav-links" aria-label="Mobile navigation">
             {navigation.map((item) => (
               <Link
