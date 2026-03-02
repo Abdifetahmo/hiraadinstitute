@@ -75,7 +75,7 @@ export function AboutPageContent({ c }: AboutPageContentProps) {
       <section className="section section--dark about-mission-vision">
         <div className="container split-grid">
           <article className="dark-panel">
-            <p className="eyebrow eyebrow--accent">{c.t("about.mission.eyebrow", "OUR MISSION")}</p>
+            <p className="eyebrow eyebrow--accent">{c.t("about.mission.eyebrow", "WHO WE ARE")}</p>
             <p>{c.t("about.mission.text", "Hiraad Institute is dedicated to advancing evidence-based policymaking in the Somali Region of Ethiopia by producing high-quality, independent research; fostering inclusive policy dialogue; and strengthening the capacity of institutions and communities to engage effectively in governance and development processes.")}</p>
           </article>
 

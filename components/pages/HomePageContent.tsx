@@ -4,7 +4,7 @@ import { ArrowRight, CloudSun, Handshake, HeartPulse, Shield, Wheat } from "luci
 
 import { ButtonLink } from "@/components/site/ButtonLink";
 import { CTASection } from "@/components/site/CTASection";
-import { IconCard, NumberedRow, PublicationCard, StatItem } from "@/components/site/Cards";
+import { IconCard, NewsFeatureCard, NumberedRow, PublicationCard, StatItem } from "@/components/site/Cards";
 import { PageShell } from "@/components/site/PageShell";
 import { SectionIntro } from "@/components/site/SectionIntro";
 import type { ContentResolver } from "@/lib/site/types";
@@ -23,6 +23,48 @@ export function HomePageContent({ c }: HomePageContentProps) {
     "home.whatwedo.image",
     "https://images.unsplash.com/photo-1665491961263-2c9f8deebf63?auto=format&fit=crop&w=1200&q=80"
   );
+
+  const newsItems = [
+    {
+      image: c.i(
+        "home.news.1.image",
+        "https://hiraadinstitute.com/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-27-at-13.27.29-1-850x900.jpeg"
+      ),
+      meta: c.t("home.news.1.meta", "CIVIC ENGAGEMENT · JUNE 1, 2025"),
+      title: c.t("home.news.1.title", "Somali Regional Youth Forum 2025: Empowering the Next Generation"),
+      excerpt: c.t(
+        "home.news.1.excerpt",
+        "Young leaders, policymakers, and community advocates convene to shape practical youth-led policy pathways for the Somali Region."
+      ),
+      href: "/news/somali-regional-youth-forum-2025-empowering-the-next-generation"
+    },
+    {
+      image: c.i(
+        "home.news.2.image",
+        "https://hiraadinstitute.com/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-27-at-13.27.28-2-850x900.jpeg"
+      ),
+      meta: c.t("home.news.2.meta", "PANEL DISCUSSION · JUNE 1, 2025"),
+      title: c.t("home.news.2.title", "Who Shapes the Narrative of the Somali Regional State?"),
+      excerpt: c.t(
+        "home.news.2.excerpt",
+        "A public panel examines how identity, media, and governance narratives influence public trust and institutional legitimacy."
+      ),
+      href: "/news/who-shapes-the-narrative-of-the-somali-regional-state"
+    },
+    {
+      image: c.i(
+        "home.news.3.image",
+        "https://hiraadinstitute.com/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-27-at-13.27.28-1-850x900.jpeg"
+      ),
+      meta: c.t("home.news.3.meta", "PUBLIC EVENT · MAY 15, 2025"),
+      title: c.t("home.news.3.title", "Experts to Discuss Ethiopia’s Federalism and Political Identities"),
+      excerpt: c.t(
+        "home.news.3.excerpt",
+        "Hiraad Institute convenes experts and partners to unpack federalism debates and their impact on political identities."
+      ),
+      href: "/news/experts-to-discuss-ethiopias-federalism-and-political-identities-at-hiraad-institute-event"
+    }
+  ];
 
   const publications = [
     {
@@ -90,7 +132,7 @@ export function HomePageContent({ c }: HomePageContentProps) {
 
       <section className="section section--surface home-mission">
         <div className="container">
-          <p className="eyebrow">{c.t("home.mission.eyebrow", "OUR MISSION")}</p>
+          <p className="eyebrow">{c.t("home.mission.eyebrow", "WHO WE ARE")}</p>
           <h2 className="home-mission-title">{c.t("home.mission.title", "Locally grounded research for\npolicy that serves communities")}</h2>
           <p className="home-mission-description">
             {c.t(
@@ -130,6 +172,35 @@ export function HomePageContent({ c }: HomePageContentProps) {
                 )}
               </p>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--surface home-news">
+        <div className="container">
+          <div className="section-heading-row">
+            <SectionIntro
+              eyebrow={c.t("home.news.eyebrow", "LATEST NEWS")}
+              title={c.t("home.news.title", "Latest updates from Hiraad")}
+              size="lg"
+            />
+            <Link href="/news-media" className="home-news-view-all">
+              <span>{c.t("home.news.viewAll", "View All News")}</span>
+              <ArrowRight aria-hidden="true" />
+            </Link>
+          </div>
+
+          <div className="grid grid--three">
+            {newsItems.map((item) => (
+              <NewsFeatureCard
+                key={item.title}
+                image={item.image}
+                meta={item.meta}
+                title={item.title}
+                excerpt={item.excerpt}
+                href={item.href}
+              />
+            ))}
           </div>
         </div>
       </section>
