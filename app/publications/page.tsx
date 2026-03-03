@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { PublicationsPageContent } from "@/components/pages/PublicationsPageContent";
 import { getContentResolver } from "@/lib/site/content";
+import { getPublicationsContent } from "@/lib/site/publications";
 
 export const metadata: Metadata = {
   title: "Publications | Hiraad Institute",
@@ -10,6 +11,6 @@ export const metadata: Metadata = {
 };
 
 export default async function PublicationsPage() {
-  const c = await getContentResolver("publications");
-  return <PublicationsPageContent c={c} />;
+  const [c, publications] = await Promise.all([getContentResolver("publications"), getPublicationsContent()]);
+  return <PublicationsPageContent c={c} publications={publications} />;
 }

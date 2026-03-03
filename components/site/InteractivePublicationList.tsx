@@ -12,11 +12,12 @@ interface PublicationItem {
   description: string;
   tags: string;
   button: string;
+  href?: string;
 }
 
 interface InteractivePublicationListProps {
   items: PublicationItem[];
-  href: string;
+  href?: string;
   labels: {
     allFormats: string;
     briefs: string;
@@ -66,7 +67,7 @@ export function InteractivePublicationList({ items, href, labels }: InteractiveP
             description={item.description}
             tags={item.tags}
             buttonLabel={item.button}
-            href={href}
+            href={item.href ?? href ?? "/publications"}
           />
         ))}
       </div>

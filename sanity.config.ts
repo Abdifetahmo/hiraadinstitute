@@ -11,7 +11,6 @@ export default defineConfig({
   title: "Hiraad CMS",
   projectId,
   dataset,
-  basePath: "/studio",
   plugins: [deskTool()],
   schema: {
     types: schemaTypes

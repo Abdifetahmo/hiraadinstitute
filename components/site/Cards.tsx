@@ -170,12 +170,18 @@ interface RelatedLinkCardProps {
   meta: string;
   title: string;
   href: string;
+  image?: string;
 }
 
-export function RelatedLinkCard({ meta, title, href }: RelatedLinkCardProps) {
+export function RelatedLinkCard({ meta, title, href, image }: RelatedLinkCardProps) {
   return (
     <Link href={href} className="card-link-wrap">
       <article className="related-link-card">
+        {image ? (
+          <div className="related-link-card-image-wrap">
+            <Image src={image} alt={title} fill className="related-link-card-image" sizes="(max-width: 768px) 100vw, 33vw" />
+          </div>
+        ) : null}
         <p className="related-link-card-meta">{meta}</p>
         <h3>{title}</h3>
       </article>

@@ -7,7 +7,8 @@ export const PAGE_SLUGS = [
   "contact",
   "news-media",
   "single-publication",
-  "single-news"
+  "single-news",
+  "single-event"
 ] as const;
 
 export type PageSlug = (typeof PAGE_SLUGS)[number];

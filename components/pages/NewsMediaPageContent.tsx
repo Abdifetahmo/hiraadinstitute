@@ -3,13 +3,17 @@ import { CompactCard } from "@/components/site/Cards";
 import { PageHero } from "@/components/site/PageHero";
 import { PageShell } from "@/components/site/PageShell";
 import { SectionIntro } from "@/components/site/SectionIntro";
+import type { NewsListItem } from "@/lib/site/news";
 import type { ContentResolver } from "@/lib/site/types";
 
 interface NewsMediaPageContentProps {
   c: ContentResolver;
+  newsItems: NewsListItem[];
 }
 
-export function NewsMediaPageContent({ c }: NewsMediaPageContentProps) {
+export function NewsMediaPageContent({ c, newsItems }: NewsMediaPageContentProps) {
+  const latestNews = newsItems.slice(0, 2);
+
   return (
     <PageShell t={c.t}>
       <PageHero
@@ -35,26 +39,16 @@ export function NewsMediaPageContent({ c }: NewsMediaPageContentProps) {
           />
 
           <div className="grid grid--two">
-            <CompactCard
-              meta={c.t("news.latest.1.meta", "NOV 2024 · INSTITUTIONAL LAUNCH")}
-              title={c.t("news.latest.1.title", "Establishment and launch of Hiraad Institute")}
-              description={c.t(
-                "news.latest.1.description",
-                "Public launch of an independent, non-partisan policy institute focused on locally grounded evidence for the Somali Region and Horn of Africa."
-              )}
-              href="/news/cross-border-dialogue-forum-regional-peace-platform"
-              variant="feature"
-            />
-            <CompactCard
-              meta={c.t("news.latest.2.meta", "2024–2025 · OUTREACH")}
-              title={c.t("news.latest.2.title", "Institutional outreach and public engagement")}
-              description={c.t(
-                "news.latest.2.description",
-                "Regional outreach, participation calls, and public engagement initiatives to expand dialogue and strengthen policy awareness."
-              )}
-              href="/news/cross-border-dialogue-forum-regional-peace-platform"
-              variant="feature"
-            />
+            {latestNews.map((item) => (
+              <CompactCard
+                key={item.slug}
+                meta={item.meta}
+                title={item.title}
+                description={item.description}
+                href={`/news/${item.slug}`}
+                variant="feature"
+              />
+            ))}
           </div>
         </div>
       </section>

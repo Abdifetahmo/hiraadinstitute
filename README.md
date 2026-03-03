@@ -7,7 +7,8 @@ This project is a fully coded Next.js App Router implementation of the Hiraad we
 - Reusable UI components in `/components/site`
 - Page-specific compositions in `/components/pages`
 - Route files in `/app`
-- Sanity CMS integration in `/lib/sanity` and `/sanity/schemaTypes`
+- Sanity CMS integration in `/lib/sanity`
+- Sanity Studio schema source in `/sanity/schemaTypes`
 
 ## Routes
 
@@ -20,7 +21,6 @@ This project is a fully coded Next.js App Router implementation of the Hiraad we
 - `/news-media`
 - `/publications/[slug]`
 - `/news/[slug]`
-- `/studio` (Sanity Studio)
 
 ## CMS model
 
@@ -56,9 +56,13 @@ cp .env.example .env.local
 npm run dev
 ```
 
-4. Open Studio:
+4. Run standalone Studio:
 
-- `http://localhost:3000/studio`
+```bash
+cd studio
+npm install
+npm run dev
+```
 
 ## Seed CMS documents
 

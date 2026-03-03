@@ -3,13 +3,15 @@ import { InteractivePublicationList } from "@/components/site/InteractivePublica
 import { PageHero } from "@/components/site/PageHero";
 import { PageShell } from "@/components/site/PageShell";
 import { SectionIntro } from "@/components/site/SectionIntro";
+import type { PublicationListItem } from "@/lib/site/publications";
 import type { ContentResolver } from "@/lib/site/types";
 
 interface PublicationsPageContentProps {
   c: ContentResolver;
+  publications: PublicationListItem[];
 }
 
-export function PublicationsPageContent({ c }: PublicationsPageContentProps) {
+export function PublicationsPageContent({ c, publications }: PublicationsPageContentProps) {
   const publicationTypes = [
     [
       c.t("publications.types.1.title", "Research Reports"),
@@ -66,64 +68,18 @@ export function PublicationsPageContent({ c }: PublicationsPageContentProps) {
     c.t("publications.theme.8", "History, heritage, and collective memory")
   ];
 
-  const recentPublications = [
-    {
-      kind: "brief" as const,
-      meta: c.t("publications.recent.1.meta", "POLICY BRIEF · JUL 2025"),
-      title: c.t(
-        "publications.recent.1.title",
-        "Decentralization and service delivery performance in the Somali Region"
-      ),
-      description: c.t(
-        "publications.recent.1.description",
-        "An evidence-based assessment of delivery bottlenecks and institutional coordination gaps across regional and local levels, with practical implementation recommendations."
-      ),
-      tags: c.t("publications.recent.1.tags", "Governance · Service Delivery · Accountability"),
-      button: c.t("publications.recent.1.button", "Open Brief")
-    },
-    {
-      kind: "report" as const,
-      meta: c.t("publications.recent.2.meta", "RESEARCH REPORT · JUN 2025"),
-      title: c.t(
-        "publications.recent.2.title",
-        "Climate vulnerability and adaptive livelihoods in pastoral districts"
-      ),
-      description: c.t(
-        "publications.recent.2.description",
-        "Field-based analysis of drought risk, mobility constraints, and resilience pathways for pastoral and agro-pastoral households across selected districts."
-      ),
-      tags: c.t("publications.recent.2.tags", "Climate · Pastoralism · Livelihoods"),
-      button: c.t("publications.recent.2.button", "Open Report")
-    },
-    {
-      kind: "other" as const,
-      meta: c.t("publications.recent.3.meta", "DISCUSSION PAPER · MAY 2025"),
-      title: c.t(
-        "publications.recent.3.title",
-        "Federalism, political identity, and state-society trust in the Somali Region"
-      ),
-      description: c.t(
-        "publications.recent.3.description",
-        "Analytical paper examining how federal arrangements, narrative framing, and institutional legitimacy shape public trust and policy implementation outcomes."
-      ),
-      tags: c.t("publications.recent.3.tags", "Federalism · Identity · Governance"),
-      button: c.t("publications.recent.3.button", "Open Paper")
-    },
-    {
-      kind: "brief" as const,
-      meta: c.t("publications.recent.4.meta", "POLICY NOTE · APR 2025"),
-      title: c.t(
-        "publications.recent.4.title",
-        "Strengthening community-based peace mechanisms in cross-border zones"
-      ),
-      description: c.t(
-        "publications.recent.4.description",
-        "Technical note on prevention-oriented peacebuilding design integrating local institutions, youth participation, and practical conflict early-warning approaches."
-      ),
-      tags: c.t("publications.recent.4.tags", "Peacebuilding · Conflict Prevention · Social Cohesion"),
-      button: c.t("publications.recent.4.button", "Open Note")
-    }
-  ];
+  const recentPublications = publications.map((publication, index) => {
+    const key = index + 1;
+    return {
+      kind: publication.kind,
+      meta: c.t(`publications.recent.${key}.meta`, publication.meta),
+      title: c.t(`publications.recent.${key}.title`, publication.title),
+      description: c.t(`publications.recent.${key}.description`, publication.description),
+      tags: c.t(`publications.recent.${key}.tags`, publication.tags),
+      button: c.t(`publications.recent.${key}.button`, publication.button),
+      href: `/publications/${publication.slug}`
+    };
+  });
 
   return (
     <PageShell t={c.t}>
@@ -214,7 +170,6 @@ export function PublicationsPageContent({ c }: PublicationsPageContentProps) {
 
           <InteractivePublicationList
             items={recentPublications}
-            href="/publications/decentralization-service-delivery-performance-somali-region"
             labels={{
               allFormats: c.t("publications.filter.all", "All Formats"),
               briefs: c.t("publications.filter.briefs", "Policy Briefs"),
