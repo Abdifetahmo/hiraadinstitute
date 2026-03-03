@@ -115,13 +115,19 @@ interface CompactCardProps {
   meta: string;
   title: string;
   description?: string;
+  image?: string;
   href?: string;
   variant?: "feature" | "pathway";
 }
 
-export function CompactCard({ meta, title, description, href, variant = "feature" }: CompactCardProps) {
+export function CompactCard({ meta, title, description, image, href, variant = "feature" }: CompactCardProps) {
   const content = (
     <article className={`compact-card compact-card--${variant}`}>
+      {image ? (
+        <div className="compact-card-image-wrap">
+          <Image src={image} alt={title} fill className="compact-card-image" sizes="(max-width: 768px) 100vw, 50vw" />
+        </div>
+      ) : null}
       {meta ? <p className="compact-card-meta">{meta}</p> : null}
       <h3>{title}</h3>
       {description ? <p>{description}</p> : null}

@@ -1112,6 +1112,20 @@ img {
   color: var(--brand-green);
 }
 
+
+.compact-card-image-wrap {
+  position: relative;
+  width: calc(100% + 48px);
+  margin: -24px -24px 8px;
+  min-height: 220px;
+  overflow: hidden;
+  border-radius: calc(var(--radius-card) - 1px) calc(var(--radius-card) - 1px) 0 0;
+}
+
+.compact-card-image {
+  object-fit: cover;
+}
+
 .compact-card--feature {
   gap: 12px;
   background: var(--bg-primary);
